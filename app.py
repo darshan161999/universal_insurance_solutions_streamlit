@@ -9,16 +9,70 @@ import json
 # Page configuration
 st.set_page_config(
     page_title="Universal Insurance Solutions - Free Coverage Analysis",
-    page_icon="🛡️",
+    page_icon="🏥",
     layout="wide",
     initial_sidebar_state="collapsed"
 )
+
+# Force light theme in page config
+st.markdown("""
+    <style>
+    /* Additional theme overrides for Streamlit Cloud */
+    .stApp {
+        background: #FFFFFF !important;
+    }
+    
+    /* Override any dark theme that might be applied by Streamlit Cloud */
+    [data-testid="stAppViewContainer"] {
+        background: #FFFFFF !important;
+    }
+    
+    /* Ensure all text is dark on light background */
+    .stApp * {
+        color: #1F2937 !important;
+    }
+    
+    /* Override specific Streamlit components */
+    .stApp .stMarkdown {
+        color: #1F2937 !important;
+    }
+    </style>
+""", unsafe_allow_html=True)
 
 # Modern Professional CSS with Responsive Design
 st.markdown("""
     <style>
     /* Import Google Fonts */
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Montserrat:wght@400;500;600;700&display=swap');
+    
+    /* Force Light Theme - Override Streamlit's default dark theme */
+    .stApp {
+        background-color: #FFFFFF !important;
+        color: #1F2937 !important;
+    }
+    
+    .stApp > header {
+        background-color: #FFFFFF !important;
+    }
+    
+    .stApp > div {
+        background-color: #FFFFFF !important;
+    }
+    
+    /* Override Streamlit's dark theme variables */
+    :root {
+        --primary-color: #3B82F6 !important;
+        --background-color: #FFFFFF !important;
+        --secondary-background-color: #F8FAFC !important;
+        --text-color: #1F2937 !important;
+        --font: 'Montserrat', sans-serif !important;
+    }
+    
+    /* Force light theme on all Streamlit components */
+    .stApp > div > div > div > div {
+        background-color: #FFFFFF !important;
+        color: #1F2937 !important;
+    }
     
     /* Global Styles */
     * {
@@ -763,6 +817,52 @@ st.markdown("""
         background: #F9FAFB !important;
         border-radius: 12px !important;
         border: 1px solid #E5E7EB !important;
+    }
+    
+    /* Force light theme on all text elements */
+    .stApp h1, .stApp h2, .stApp h3, .stApp h4, .stApp h5, .stApp h6 {
+        color: #1F2937 !important;
+    }
+    
+    .stApp p, .stApp span, .stApp div {
+        color: #1F2937 !important;
+    }
+    
+    /* Override Streamlit's default text colors */
+    .stApp .stMarkdown {
+        color: #1F2937 !important;
+    }
+    
+    .stApp .stMarkdown p {
+        color: #1F2937 !important;
+    }
+    
+    .stApp .stMarkdown h1, .stApp .stMarkdown h2, .stApp .stMarkdown h3 {
+        color: #1F2937 !important;
+    }
+    
+    /* Force light theme on form elements */
+    .stApp .stTextInput label, .stApp .stSelectbox label, .stApp .stTextArea label {
+        color: #1F2937 !important;
+    }
+    
+    .stApp .stTextInput input, .stApp .stSelectbox select, .stApp .stTextArea textarea {
+        background-color: #FFFFFF !important;
+        color: #1F2937 !important;
+        border-color: #D1D5DB !important;
+    }
+    
+    /* Override any dark theme classes */
+    .stApp [data-testid="stAppViewContainer"] {
+        background-color: #FFFFFF !important;
+    }
+    
+    .stApp [data-testid="stHeader"] {
+        background-color: #FFFFFF !important;
+    }
+    
+    .stApp [data-testid="stSidebar"] {
+        background-color: #F8FAFC !important;
     }
     
     /* Hide Streamlit Branding */
