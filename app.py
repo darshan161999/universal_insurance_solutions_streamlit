@@ -852,6 +852,48 @@ st.markdown("""
         border-color: #D1D5DB !important;
     }
     
+    /* Fix dropdown selected text color */
+    .stSelectbox > div > div > div {
+        color: #1F2937 !important;
+        background-color: #FFFFFF !important;
+    }
+    
+    .stSelectbox > div > div > div[role="combobox"] {
+        color: #1F2937 !important;
+        background-color: #FFFFFF !important;
+    }
+    
+    .stSelectbox > div > div > div[data-baseweb="select"] {
+        color: #1F2937 !important;
+        background-color: #FFFFFF !important;
+    }
+    
+    /* Fix dropdown options text color */
+    .stSelectbox div[role="listbox"] div[role="option"] {
+        color: #1F2937 !important;
+        background-color: #FFFFFF !important;
+    }
+    
+    .stSelectbox div[role="listbox"] div[role="option"]:hover {
+        color: #1F2937 !important;
+        background-color: #F3F4F6 !important;
+    }
+    
+    .stSelectbox div[role="listbox"] div[role="option"][aria-selected="true"] {
+        color: #1F2937 !important;
+        background-color: #EFF6FF !important;
+    }
+    
+    /* Force text color on all selectbox elements */
+    .stSelectbox * {
+        color: #1F2937 !important;
+    }
+    
+    /* Override any Streamlit default text colors */
+    .stSelectbox .stSelectbox > div > div > div > div {
+        color: #1F2937 !important;
+    }
+    
     /* Override any dark theme classes */
     .stApp [data-testid="stAppViewContainer"] {
         background-color: #FFFFFF !important;
@@ -990,16 +1032,43 @@ st.markdown("""
         });
     }
     
+    // Function to fix dropdown text colors
+    function fixDropdownTextColors() {
+        // Fix selected text color in dropdowns
+        const selectBoxes = document.querySelectorAll('.stSelectbox > div > div > div');
+        selectBoxes.forEach(select => {
+            select.style.color = '#1F2937';
+            select.style.backgroundColor = '#FFFFFF';
+        });
+        
+        // Fix dropdown options text color
+        const options = document.querySelectorAll('.stSelectbox div[role="option"]');
+        options.forEach(option => {
+            option.style.color = '#1F2937';
+            option.style.backgroundColor = '#FFFFFF';
+        });
+        
+        // Force text color on all selectbox children
+        const allSelectElements = document.querySelectorAll('.stSelectbox *');
+        allSelectElements.forEach(element => {
+            if (element.tagName !== 'SVG' && element.tagName !== 'PATH' && element.tagName !== 'POLYGON') {
+                element.style.color = '#1F2937';
+            }
+        });
+    }
+    
     // Apply error styling when page loads
     document.addEventListener('DOMContentLoaded', function() {
         applyErrorStyling();
         fixDropdownArrows();
+        fixDropdownTextColors();
     });
     
     // Apply error styling after form submission
     setTimeout(function() {
         applyErrorStyling();
         fixDropdownArrows();
+        fixDropdownTextColors();
     }, 100);
     
     // Apply error styling when form fields are updated
@@ -1009,6 +1078,7 @@ st.markdown("""
                 setTimeout(function() {
                     applyErrorStyling();
                     fixDropdownArrows();
+                    fixDropdownTextColors();
                 }, 50);
             }
         });
@@ -1021,9 +1091,10 @@ st.markdown("""
         attributeFilter: ['placeholder', 'textContent']
     });
     
-    // Additional interval check to ensure arrows are styled
+    // Additional interval check to ensure arrows and text colors are styled
     setInterval(function() {
         fixDropdownArrows();
+        fixDropdownTextColors();
     }, 500);
     </script>
 """, unsafe_allow_html=True)
