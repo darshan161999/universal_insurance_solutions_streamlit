@@ -28,15 +28,9 @@ st.markdown("""
         background: #FFFFFF !important;
     }
     
-    /* Ensure all text is dark on light background */
-    .stApp * {
-        color: #1F2937 !important;
-    }
     
-    /* Override specific Streamlit components */
-    .stApp .stMarkdown {
-        color: #1F2937 !important;
-    }
+    
+    
     </style>
 """, unsafe_allow_html=True)
 
@@ -1783,3 +1777,4 @@ with col2:
                         st.rerun()
                     else:
                         st.error("❌ System error. Please try again or call us directly.")
+
