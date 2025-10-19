@@ -16,6 +16,7 @@ st.set_page_config(
 
 # Force light theme in page config
 st.markdown("""
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <style>
     /* Additional theme overrides for Streamlit Cloud */
     .stApp {
@@ -588,58 +589,207 @@ st.markdown("""
         text-decoration: none;
     }
     
-    /* Responsive Design for iPad and Mobile */
+    /* Mobile Responsive Design */
     @media (max-width: 768px) {
+        /* Main container adjustments */
+        .main {
+            padding: 0 10px !important;
+            margin: 0 !important;
+        }
+        
+        /* Hero section mobile optimization */
         .hero-section {
-            padding: 15px 12px;
+            padding: 20px 15px !important;
+            margin: 10px 0 !important;
+            border-radius: 12px !important;
         }
         
         .hero-title {
-            font-size: clamp(20px, 5vw, 28px);
+            font-size: clamp(24px, 6vw, 32px) !important;
+            line-height: 1.2 !important;
+            margin-bottom: 8px !important;
         }
         
         .hero-subtitle {
-            font-size: clamp(12px, 3vw, 16px);
+            font-size: clamp(14px, 4vw, 18px) !important;
+            line-height: 1.3 !important;
+            margin-bottom: 15px !important;
         }
         
         .hero-badges {
-            margin-top: 10px;
-            gap: 4px;
+            display: flex !important;
+            flex-wrap: wrap !important;
+            gap: 6px !important;
+            justify-content: center !important;
+            margin-top: 15px !important;
         }
         
         .badge {
-            padding: 3px 8px;
-            font-size: 10px;
+            padding: 6px 12px !important;
+            font-size: 11px !important;
+            border-radius: 20px !important;
+            white-space: nowrap !important;
+        }
+        
+        /* Column layout for mobile */
+        div[data-testid="column"] {
+            padding: 0 5px !important;
+            margin-bottom: 15px !important;
+        }
+        
+        /* Expertise section mobile */
+        .expertise-container {
+            margin-bottom: 20px !important;
         }
         
         .expertise-card {
-            padding: 6px;
-            margin-bottom: 4px;
+            padding: 12px !important;
+            margin-bottom: 8px !important;
+            border-radius: 8px !important;
         }
         
         .expertise-title {
-            font-size: 12px;
+            font-size: 14px !important;
+            margin-bottom: 6px !important;
         }
         
         .expertise-description {
-            font-size: 10px;
+            font-size: 12px !important;
+            line-height: 1.4 !important;
+        }
+        
+        /* Form container mobile */
+        .form-container {
+            padding: 20px 15px !important;
+            margin: 10px 0 !important;
+            border-radius: 12px !important;
+        }
+        
+        .form-header {
+            font-size: 20px !important;
+            margin-bottom: 8px !important;
+        }
+        
+        .form-subheader {
+            font-size: 14px !important;
+            margin-bottom: 20px !important;
+        }
+        
+        /* Input fields mobile */
+        .stTextInput>div>div>input,
+        .stSelectbox>div>div>div,
+        .stTextArea>div>div>textarea {
+            padding: 14px 16px !important;
+            font-size: 16px !important;
+            border-radius: 8px !important;
+        }
+        
+        .stTextInput>label,
+        .stSelectbox>label,
+        .stTextArea>label {
+            font-size: 14px !important;
+            margin-bottom: 6px !important;
+        }
+        
+        /* Button mobile */
+        .stButton>button {
+            font-size: 16px !important;
+            padding: 14px 24px !important;
+            width: 100% !important;
+            border-radius: 8px !important;
+        }
+        
+        /* Benefits grid mobile */
+        .benefits-grid {
+            grid-template-columns: 1fr !important;
+            gap: 8px !important;
+            margin-top: 15px !important;
+        }
+        
+        .benefit-item {
+            padding: 12px !important;
+            border-radius: 8px !important;
+        }
+        
+        /* Contact information mobile */
+        .contact-info {
+            margin-top: 20px !important;
+            padding: 15px !important;
+            border-radius: 10px !important;
+        }
+        
+        /* Success animation mobile */
+        .success-animation {
+            padding: 20px !important;
+            font-size: 16px !important;
+            border-radius: 12px !important;
+        }
+        
+        /* Hide Streamlit sidebar on mobile */
+        .stApp > div[data-testid="stSidebar"] {
+            display: none !important;
+        }
+        
+        /* Force single column layout */
+        .stApp > div[data-testid="stAppViewContainer"] > div {
+            padding: 0 !important;
+        }
+    }
+    
+    /* Extra small mobile devices */
+    @media (max-width: 480px) {
+        .main {
+            padding: 0 5px !important;
+        }
+        
+        .hero-section {
+            padding: 15px 10px !important;
+        }
+        
+        .hero-title {
+            font-size: clamp(20px, 7vw, 28px) !important;
+        }
+        
+        .hero-subtitle {
+            font-size: clamp(12px, 4vw, 16px) !important;
+        }
+        
+        .badge {
+            padding: 4px 8px !important;
+            font-size: 10px !important;
         }
         
         .form-container {
-            padding: 15px;
+            padding: 15px 10px !important;
         }
         
-        .benefits-grid {
-            grid-template-columns: 1fr;
-        }
-        
-        div[data-testid="column"] {
-            padding: 0 !important;
+        .stTextInput>div>div>input,
+        .stSelectbox>div>div>div,
+        .stTextArea>div>div>textarea {
+            padding: 12px 14px !important;
+            font-size: 16px !important;
         }
         
         .stButton>button {
-            font-size: 16px;
-            padding: 12px;
+            padding: 12px 20px !important;
+            font-size: 15px !important;
+        }
+    }
+    
+    /* Landscape mobile orientation */
+    @media (max-width: 768px) and (orientation: landscape) {
+        .hero-section {
+            padding: 15px 20px !important;
+        }
+        
+        .hero-badges {
+            flex-wrap: wrap !important;
+            gap: 4px !important;
+        }
+        
+        .badge {
+            padding: 4px 8px !important;
+            font-size: 10px !important;
         }
     }
     
@@ -868,6 +1018,33 @@ st.markdown("""
         background-color: #FFFFFF !important;
     }
     
+    /* Fix placeholder and selected value text color */
+    .stSelectbox input {
+        color: #1F2937 !important;
+        background-color: #FFFFFF !important;
+    }
+    
+    .stSelectbox input::placeholder {
+        color: #6B7280 !important;
+    }
+    
+    .stSelectbox input[value] {
+        color: #1F2937 !important;
+    }
+    
+    /* Force text color on all selectbox text elements */
+    .stSelectbox div[data-baseweb="select"] > div {
+        color: #1F2937 !important;
+    }
+    
+    .stSelectbox div[data-baseweb="select"] > div > div {
+        color: #1F2937 !important;
+    }
+    
+    .stSelectbox div[data-baseweb="select"] > div > div > div {
+        color: #1F2937 !important;
+    }
+    
     /* Fix dropdown options text color */
     .stSelectbox div[role="listbox"] div[role="option"] {
         color: #1F2937 !important;
@@ -1041,11 +1218,32 @@ st.markdown("""
             select.style.backgroundColor = '#FFFFFF';
         });
         
+        // Fix input elements within selectboxes
+        const inputs = document.querySelectorAll('.stSelectbox input');
+        inputs.forEach(input => {
+            input.style.color = '#1F2937';
+            input.style.backgroundColor = '#FFFFFF';
+        });
+        
+        // Fix placeholder text color
+        const placeholders = document.querySelectorAll('.stSelectbox input::placeholder');
+        placeholders.forEach(placeholder => {
+            placeholder.style.color = '#6B7280';
+        });
+        
         // Fix dropdown options text color
         const options = document.querySelectorAll('.stSelectbox div[role="option"]');
         options.forEach(option => {
             option.style.color = '#1F2937';
             option.style.backgroundColor = '#FFFFFF';
+        });
+        
+        // Fix all text elements in selectboxes
+        const textElements = document.querySelectorAll('.stSelectbox div[data-baseweb="select"] *');
+        textElements.forEach(element => {
+            if (element.tagName !== 'SVG' && element.tagName !== 'PATH' && element.tagName !== 'POLYGON') {
+                element.style.color = '#1F2937';
+            }
         });
         
         // Force text color on all selectbox children
@@ -1054,6 +1252,17 @@ st.markdown("""
             if (element.tagName !== 'SVG' && element.tagName !== 'PATH' && element.tagName !== 'POLYGON') {
                 element.style.color = '#1F2937';
             }
+        });
+        
+        // Additional fix for BaseWeb select components
+        const baseWebSelects = document.querySelectorAll('[data-baseweb="select"]');
+        baseWebSelects.forEach(select => {
+            const textElements = select.querySelectorAll('*');
+            textElements.forEach(element => {
+                if (element.tagName !== 'SVG' && element.tagName !== 'PATH' && element.tagName !== 'POLYGON') {
+                    element.style.color = '#1F2937';
+                }
+            });
         });
     }
     
