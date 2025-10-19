@@ -1022,27 +1022,94 @@ st.markdown("""
     .stSelectbox input {
         color: #1F2937 !important;
         background-color: #FFFFFF !important;
+        font-size: 15px !important;
+        font-weight: 500 !important;
     }
     
     .stSelectbox input::placeholder {
         color: #6B7280 !important;
+        font-size: 15px !important;
     }
     
     .stSelectbox input[value] {
         color: #1F2937 !important;
+        font-size: 15px !important;
+        font-weight: 500 !important;
     }
     
     /* Force text color on all selectbox text elements */
     .stSelectbox div[data-baseweb="select"] > div {
         color: #1F2937 !important;
+        font-size: 15px !important;
     }
     
     .stSelectbox div[data-baseweb="select"] > div > div {
         color: #1F2937 !important;
+        font-size: 15px !important;
     }
     
     .stSelectbox div[data-baseweb="select"] > div > div > div {
         color: #1F2937 !important;
+        font-size: 15px !important;
+    }
+    
+    /* Specific targeting for selected values in dropdowns */
+    .stSelectbox div[data-baseweb="select"] div[role="combobox"] {
+        color: #1F2937 !important;
+        font-size: 15px !important;
+        font-weight: 500 !important;
+        background-color: #FFFFFF !important;
+    }
+    
+    .stSelectbox div[data-baseweb="select"] div[role="combobox"] span {
+        color: #1F2937 !important;
+        font-size: 15px !important;
+        font-weight: 500 !important;
+    }
+    
+    /* Target the actual text content in selectboxes */
+    .stSelectbox div[data-baseweb="select"] div[role="combobox"] div {
+        color: #1F2937 !important;
+        font-size: 15px !important;
+        font-weight: 500 !important;
+    }
+    
+    /* Force all text within selectbox containers to be black */
+    .stSelectbox div[data-baseweb="select"] * {
+        color: #1F2937 !important;
+    }
+    
+    /* Override any inherited text colors */
+    .stSelectbox div[data-baseweb="select"] div[role="combobox"] * {
+        color: #1F2937 !important;
+        font-size: 15px !important;
+    }
+    
+    /* Force text color on selected values - most specific targeting */
+    .stSelectbox div[data-baseweb="select"] div[role="combobox"] div[data-baseweb="select-value"] {
+        color: #1F2937 !important;
+        font-size: 15px !important;
+        font-weight: 500 !important;
+    }
+    
+    .stSelectbox div[data-baseweb="select"] div[role="combobox"] div[data-baseweb="select-value"] span {
+        color: #1F2937 !important;
+        font-size: 15px !important;
+        font-weight: 500 !important;
+    }
+    
+    /* Target any text content in the selectbox */
+    .stSelectbox div[data-baseweb="select"] div[role="combobox"] div[data-baseweb="select-value"] div {
+        color: #1F2937 !important;
+        font-size: 15px !important;
+        font-weight: 500 !important;
+    }
+    
+    /* Universal override for all text in selectboxes */
+    .stSelectbox div[data-baseweb="select"] div[role="combobox"] div[data-baseweb="select-value"] * {
+        color: #1F2937 !important;
+        font-size: 15px !important;
+        font-weight: 500 !important;
     }
     
     /* Fix dropdown options text color */
@@ -1223,12 +1290,34 @@ st.markdown("""
         inputs.forEach(input => {
             input.style.color = '#1F2937';
             input.style.backgroundColor = '#FFFFFF';
+            input.style.fontSize = '15px';
+            input.style.fontWeight = '500';
+        });
+        
+        // Fix selected values in combobox
+        const comboboxes = document.querySelectorAll('.stSelectbox div[role="combobox"]');
+        comboboxes.forEach(combobox => {
+            combobox.style.color = '#1F2937';
+            combobox.style.fontSize = '15px';
+            combobox.style.fontWeight = '500';
+            combobox.style.backgroundColor = '#FFFFFF';
+            
+            // Target all child elements
+            const children = combobox.querySelectorAll('*');
+            children.forEach(child => {
+                if (child.tagName !== 'SVG' && child.tagName !== 'PATH' && child.tagName !== 'POLYGON') {
+                    child.style.color = '#1F2937';
+                    child.style.fontSize = '15px';
+                    child.style.fontWeight = '500';
+                }
+            });
         });
         
         // Fix placeholder text color
         const placeholders = document.querySelectorAll('.stSelectbox input::placeholder');
         placeholders.forEach(placeholder => {
             placeholder.style.color = '#6B7280';
+            placeholder.style.fontSize = '15px';
         });
         
         // Fix dropdown options text color
@@ -1305,6 +1394,30 @@ st.markdown("""
         fixDropdownArrows();
         fixDropdownTextColors();
     }, 500);
+    
+    // More frequent check specifically for selected values
+    setInterval(function() {
+        // Force selected values to be black and properly sized
+        const allSelectElements = document.querySelectorAll('.stSelectbox *');
+        allSelectElements.forEach(element => {
+            if (element.tagName !== 'SVG' && element.tagName !== 'PATH' && element.tagName !== 'POLYGON') {
+                element.style.color = '#1F2937';
+                if (element.tagName === 'INPUT' || element.tagName === 'DIV' || element.tagName === 'SPAN') {
+                    element.style.fontSize = '15px';
+                    element.style.fontWeight = '500';
+                }
+            }
+        });
+        
+        // Specifically target combobox content
+        const comboboxes = document.querySelectorAll('[data-baseweb="select"] div[role="combobox"]');
+        comboboxes.forEach(combobox => {
+            combobox.style.color = '#1F2937';
+            combobox.style.fontSize = '15px';
+            combobox.style.fontWeight = '500';
+            combobox.style.backgroundColor = '#FFFFFF';
+        });
+    }, 200);
     </script>
 """, unsafe_allow_html=True)
 
